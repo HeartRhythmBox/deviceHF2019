@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cardiac Rhythm Device in HF</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1548733331544768",
+          enable_page_level_ads: true
+     });
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119340815-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119340815-1');
+</script>
+
+
+<meta charset="UTF-8">
+<meta name="description" content="Optimal cardiac rhythm device in heart failure patient 2019.">
+<meta name="keywords" content="heart rhythm, cardiac rhythm device, heart failure, arrhythmia">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawCurveChart);
+      google.charts.setOnLoadCallback(drawIntervalChart);
+      google.charts.setOnLoadCallback(drawIntervalChart2);
+      google.charts.setOnLoadCallback(drawIcd_chart1);
+      google.charts.setOnLoadCallback(drawIcd_chart2);
+      function drawCurveChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Risk', 'Benefit'],
+          ['0', 0.5],
+          ['1',  3.3],
+          ['2',  1.4],
+          ['3',  0.7]
+        ]);
+
+        var options = {
+          title: 'Benefit of a Treatment by Clinical Risk Profile of Patients',
+          titleTextStyle: {color:'#1de3fa', fontSize:35, fontName:"Exo"},
+          backgroundColor: 'black',
+          curveType: 'function', lineWidth: 5, series: [{'color': '#1DE3FA'}],
+          legend: 'none',
+          vAxis: {baselineColor: '#ddd',
+                gridlines: {count: 0}, title: 'Benefit..from low to high -->',textPosition:'none',
+                titleTextStyle: {italic:false,fontSize:30,color:'#ddd'}
+                    },
+          hAxis: {title:'Risk profile..from low to high-->',textPosition:'none',
+                  titleTextStyle: {italic:false,fontSize:30,color:'#ddd'},
+                  }
+          };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+         
+
+      function drawIntervalChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'NYHA');
+        data.addColumn('number', 'values');
+        data.addColumn({id:'i0', type:'number', role:'interval'});
+        data.addColumn({id:'i1', type:'number', role:'interval'});
+        
+          
+        data.addRows([
+            ['I', 0.7,0.3,1.3],
+            ['II', 0.63,0.52,0.76],
+            ['III', 0.67,0.57,0.79],
+            ['ambulatory IV', 0.52, 0.32,0.87]]);
+  
+        // The intervals data as narrow lines (useful for showing raw source data)
+        var options_lines = {
+            title: 'HR and 95%CI for death or HF hospitalization of CRT vs. Conventional Tx',
+            titleTextStyle: {color:'#115bbc', fontSize:30, fontName:"Exo"},
+            curveType: 'function',
+            lineWidth: 5,
+            intervals: { 'style':'line' },
+            legend: 'none',
+            vAxis: {baseline:1,title: '<---- favor CRT',
+            titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}},
+            hAxis: {title: 'NYHA',titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}}
+        };
+  
+        var chart_lines = new google.visualization.LineChart(document.getElementById('chart_lines'));
+        chart_lines.draw(data, options_lines);
+      }
+    
+      
+      function drawIntervalChart2() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'LVEF');
+        data.addColumn('number', 'values');
+        data.addColumn({type:'number', role:'interval'});
+        data.addColumn({type:'number', role:'interval'});
+        
+          
+        data.addRows([
+            ['<15%', 0.62,0.41,0.92],
+            ['16-20%', 0.57,0.41,0.8],
+            ['21-30%', 0.75,0.6,0.92],
+            ['31-35%', 0.52, 0.25,1.08],
+            ['>35%',0.75,0.28,2]]);
+  
+        // The intervals data as narrow lines (useful for showing raw source data)
+        var options_lines = {
+            title: 'HR and 95%CI for death or HF hospitalization of CRT vs. Conventional Tx',
+            titleTextStyle: {color:'#115bbc', fontSize:30, fontName:"Exo"},
+            curveType: 'function',
+            lineWidth: 5,
+            intervals: { 'style':'line' },
+            legend: 'none',
+            vAxis: {baseline:1,title: '<---- favor CRT',
+            titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}},
+            hAxis: {title: 'LVEF',titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}}
+        };
+  
+        var chart_lines = new google.visualization.LineChart(document.getElementById('chart_lines2'));
+        chart_lines.draw(data, options_lines);
+      }
+    
+      
+      function drawIcd_chart1() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Risk profiles');
+        data.addColumn('number', 'values');
+        data.addColumn({type:'number', role:'interval'});
+        data.addColumn({type:'number', role:'interval'});
+        data.addColumn({type: 'string', role: 'tooltip'});
+        
+          
+        data.addRows([
+            ['Any death: Low, SCD: Low', 0.921,0.787,1.08, '60F, NYHA II, \n non-ischemic, EF33%, \n annual mortality 1%, SCD ratio 0.49'],
+            ['Any death: Low, SCD: High', 0.599,0.530,0.677, '53M, NYHA II, \n ischemic, EF30%, \n annual mortality 3.1%, SCD ratio 0.65'],
+            ['Any death: High, SCD: High', 0.683,0.641,0.727, '67M, NYHA III, ischemic, \n EF23%, Cr 1.2, QRS 125, \n annual mortality 9.2%, SCD ratio 0.53'],
+            ['Any death: High, SCD: Low', 0.791, 0.742,0.843, '75M, NYHA III, ischemic, \n EF 25%, DM, Cr 2.0, QRS 135, \n annual mortality 13.4%, SCD ratio 0.36']
+            ]);
+  
+        // The intervals data as narrow lines (useful for showing raw source data)
+        var options_lines = {
+            title: 'HR and 95%CI for all-cause mortality of ICD vs. Conventional Tx',
+            titleTextStyle: {color:'#115bbc', fontSize:30, fontName:"Exo"},
+            curveType: 'function',
+            lineWidth: 5,
+            intervals: { 'style':'line' },
+            legend: 'none',
+            vAxis: {baseline:1,title: '<---- favor ICD', 
+            titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}},
+            hAxis: {title: 'Risk Profiles',titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"},gridlines: {count:12}}
+        };
+  
+        var chart_lines = new google.visualization.LineChart(document.getElementById('icd_chart1'));
+        chart_lines.draw(data, options_lines);
+      }
+    
+      function drawIcd_chart2() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Risk profiles');
+        data.addColumn('number', 'values');
+        data.addColumn({type:'number', role:'interval'});
+        data.addColumn({type:'number', role:'interval'});
+        
+          
+        data.addRows([
+            ['Any death: Low, SCD: Low', 1.0,0.42,2.16],
+            ['Any death: Low, SCD: High', 0.75,0.44,1.29],
+            ['Any death: High, SCD: High', 0.45,0.25,0.8],
+            ['Any death: High, SCD: Low', 1.09, 0.76,1.55]
+            ]);
+  
+        // The intervals data as narrow lines (useful for showing raw source data)
+        var options_lines = {
+            title: 'HR and 95%CI for all-cause mortality of ICD vs. Conventional Tx in non-ischemic cardiomyopathy',
+            titleTextStyle: {color:'#115bbc', fontSize:30, fontName:"Exo"},
+            curveType: 'function',
+            lineWidth: 5,
+            intervals: { 'style':'line' },
+            legend: 'none',
+            vAxis: {baseline:1,title: '<---- favor ICD', 
+            titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}},
+            hAxis: {title: 'Risk Profiles',titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}}
+        };
+  
+        var chart_lines = new google.visualization.LineChart(document.getElementById('icd_chart2'));
+        chart_lines.draw(data, options_lines);
+      }
+    
+      
+    </script>
+
+
+</head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Exo:200,400,600|Oswald&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Prompt:300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<style>
+
+.pointer {
+    cursor: pointer;
+    height: 0.5em;
+    width: 0.5em;
+    background-color: #fc553d;
+    border-radius: 50%;
+    position: fixed;  
+    z-index: 1;
+    animation: blink 1.5s linear infinite;
+    }
+    @keyframes blink{
+    0%{opacity: 0;}
+    50%{opacity: 0.7}
+    100%{opacity: 1;}
+    }
+.block {min-height:100vh}
+@media only screen and (max-width: 768px) {
+    .block {min-height: auto}
+}
+
+@media only screen and (max-width: 600px) {
+    .noMobile {display: none}
+}
+
+.tablet {display: none}
+
+@media only screen and (max-width: 1000px) {
+    .tabletUp {display: none}
+    .tablet {display: block}
+}
+
+
+.gradient{width: 100%;height: 100vh;text-align: center;
+background-image: radial-gradient(farthest-side at 55% 0%, #1DE3FA, #0aaee6, #0e79ce,#115bbc)}
+.sans {font-family: 'Exo', sans-serif;}
+.thai {font-family: 'Prompt', sans-serif;}
+.narrow {font-family: 'Oswald', sans-serif;}
+
+@keyframes opacity {
+  0%   {opacity: 0;}
+  100% {opacity: 1}
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.cellHideFirst {display: none}
+.cellHideSecond {display: none}
+.cellHideThird {display: none}
+
+.ref {font-size:1.2vmax;color:#ddd;font-family: 'Exo', sans-serif;}
+
+.tabInfo {display: none} 
+
+</style>
+
+<body>
+<div class="gradient block">
+    <div class="sans w3-container" style="font-size:4vmax;padding:20vh 8vw 1vh 8vw;
+    color: #def5fe;line-height: 130%;text-align: center">
+        <span style="font-weight: 200">Optimal</span>
+        <span style="font-weight: 600;"> Candidates</span>
+        <span style="font-weight:200;font-size: 3vmax;color:#def5fe;">for </span><br>
+        <span style="font-weight: 600;font-size:5vmax;color: white"> Cardiac Rhythm Devices</span><br>
+        <span style="font-weight: 200;font-size: 3vmax;color:#def5fe;">in </span>
+        <span style="color:#cbf0fd;font-weight: 600;">heart failure</span>
+        <div id='info' style="line-height: 120%;font-size:2vmax;color:#cbf0fd;padding-top: 7vh;
+        font-weight: 200;display: none;" class="w3-wide">
+        SIRIN APIYASAWAT, MD <br><span style="font-size:1.8vmax">RAMATHIBODI &nbsp;&nbsp;HOSPITAL</span>
+        </div>
+        
+    </div>
+    <div style="font-size:2vmax;color:#fee7de;font-weight: 200;position: absolute;bottom: 8%;left: 50%;margin-left: -10vmax" 
+    class="w3-row sans w3-center">
+        <a href="https://heartrhythmbox.com/" target="_blank" style="text-decoration: none;cursor:pointer">
+        heart<span style="font-weight:600">rhythm</span>box.com</a>
+        </div>
+</div>
+
+<!--start pointer-->
+<div onclick="pointer()"><span class="pointer" style="display: none"></span> 
+
+<!--Cinderella-->
+<div class="w3-black w3-center block noMobile">
+    <video id="cinderella" controls style="padding-top: 5vh">
+        <source src="media/cinderella.mp4" type="video/mp4" >
+    </video><br>
+</div>   
+
+<!--live longer feel better-->
+<div class="block w3-black w3-center noMobile" style="padding: 1vmax 5vmax">
+    <table class="w3-table w3-padding sans w3-center" style="font-size: 3vmax;">
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+            <td> 
+                <div class="w3-circle" style="width:15vw;height:15vw;border:#1DE3FA 0.1vmax solid;
+                color:#1DE3FA;line-height: 100%;padding-top: 4vw;text-align: left;animation-name: opacity;animation-duration: 1.5s"
+                onclick="showCell('cellHideFirst')">
+                <span style="font-weight: 200">&nbsp;&nbsp;&nbsp;feel</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Better</div>
+            </td>
+            <td> <div class="w3-circle" style="border: #1DE3FA 0.1vmax solid;width:15vw;height:15vw;
+                color:#1DE3FA;line-height: 100%;padding-top: 4vw;text-align: left;animation-name: opacity;animation-duration: 1.5s">
+                <span style="font-weight: 200">&nbsp;&nbsp;&nbsp;live</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Longer</div>
+            </td>
+        </tr>
+        <tr class="cellHideFirst" style="font-weight: 600;border-top: #115bbc dotted 0.1vmax"
+            onclick="showCell('cellHideSecond')">
+            <td class="w3-center">
+                Diuretics, Inotropes
+            </td>
+            <td style="vertical-align: middle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="material-icons" style="color:#1DE3FA;font-size: 3.5vmax">
+                    check_circle
+                </i>
+            </td>
+            <td style="vertical-align: middle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons" style="font-size:3.5vmax;color:red">
+                            cancel
+                            </i>
+            </td>
+        </tr>
+
+        <tr class="cellHideSecond" style="font-weight: 600;border-top: #115bbc dotted 0.1vmax"
+            onclick="showCell('cellHideThird')">
+                <td class="w3-center">
+                    ACEI, ARNI,<br> BB, MRA
+                    
+                </td>
+                <td style="vertical-align: middle;font-size:3.5vmax;color:red">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?
+                </td>
+                <td style="vertical-align: middle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons" style="color:#1DE3FA;font-size: 3.5vmax">
+                        check_circle
+                    </i>
+                </td>
+                
+        </tr>     
+        <tr class="cellHideThird" style="font-weight: 600;border-top: #115bbc dotted 0.1vmax">
+                <td class="w3-center" style="line-height: 100%">
+                    CRT<br>
+                    <span style="font-size:2vmax;font-weight:200">
+                    Cardiac Resynchronization Therapy
+                    </span>
+                </td>
+                
+                <td style="vertical-align: middle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons" style="color:#1DE3FA;font-size: 3.5vmax">
+                        check_circle
+                    </i>
+                </td>
+                <td style="vertical-align: middle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="material-icons" style="color:#1DE3FA;font-size: 3.5vmax">
+                            check_circle
+                        </i>
+                    </td>
+              
+        </tr>        
+    </table>
+</div> 
+
+<!--CRT intro-->
+<div class="block gradient thai" style="font-size:5vmax;padding: 1vmax 5vmax;color: white">
+    <div class="w3-content" style="padding-top:15vh;text-align: left;line-height: 120%">
+        <i class="material-icons" style="font-size:5vmax">
+            format_quote   </i><br>
+        ก่อนที่เราจะไปถึงจุดนั้น...<br>
+        เรามาทำความรู้จักกับ 'CRT' กันหน่อยดีมั้ย
+    </div>
+
+    <!--logo-->
+    <div style="font-size:2vmax;background-color:#ddd;font-weight: 400;color: #0e79ce;padding: 0;margin-top: 5vh;"  
+    class="w3-content sans w3-center">
+        <a href="https://heartrhythmbox.com/" target="_blank" style="text-decoration: none;cursor:pointer;">
+        heart<span style="font-weight:600">rhythm</span>box.com</a>
+        </div> 
+</div> 
+
+<!--CRT overview-->
+<div class="block" style="background-image: linear-gradient(to top, #0aaee6, #0e79ce,#115bbc)">
+    <div class="w3-row w3-center sans w3-padding" style="font-size:4vmax;color:white;font-weight:400">
+    CRT Overview...in 20 seconds.
+    </div>
+    <div class="w3-center">
+        <video controls style="width: auto;max-height: 80vh">
+            <source src="media/CRT.mp4" type="video/mp4" >
+        </video>
+    </div>
+    <div class="ref w3-padding w3-center">
+        Ref:&nbsp;
+        <a href="https://medmovie.com/">medmovie.com</a>,
+        <a href="https://www.heartrhythmjournal.com/article/S1547-5271(04)00548-X/addons">Heart Rhythm Journal 2005.</a>,
+        and 
+        <a href="http://www.vhlab.umn.edu">Visible Heart Lab</a>
+    </div>
+</div>
+
+<!--risk/benefit curve intro-->
+<div class="block gradient thai" style="font-size:5.5vmax;padding: 1vmax 5vmax;color: white">
+        <div class="w3-content" style="padding-top:15vh;text-align: left;line-height: 120%">
+            <i class="material-icons" style="font-size:5.5vmax">
+                format_quote   </i><br>
+            แล้วใครบ้าง<br>ที่จะได้ประโยชน์จาก CRT
+        </div>
+    
+        <!--logo-->
+        <div style="font-size:2vmax;background-color:#ddd;font-weight: 400;color: #0e79ce;padding: 0;margin-top: 5vh;"  
+        class="w3-content sans w3-center">
+            <a href="https://heartrhythmbox.com/" target="_blank" style="text-decoration: none;cursor:pointer;">
+            heart<span style="font-weight:600">rhythm</span>box.com</a>
+            </div> 
+    </div> 
+
+<!--risk benefit curve chart-->
+<div class="block w3-black">
+    <div class="tabletUp" id="curve_chart" class="w3-center" style="width: 100vw;height: 100vh;"></div>
+    <div class="tablet w3-padding">
+        <img src="media/riskBenefitCurve.png" style="width:100%">
+    </div>
+</div>
+
+<!--CRT QRS duration-->
+<div class="block" style="border: #115bbc 0.5vmax solid">
+    <div class="w3-row sans" style="background-image: linear-gradient(to left,transparent, #0aaee6, #0e79ce,#115bbc);
+    font-size: 3vmax;color:white;font-weight: 200">
+            Benefits of CRT by<span style="font-weight: 600"> QRS duration</span>
+    </div>
+    <div class="w3-row w3-margin sans" style="padding: 1vmax;font-size:2vmax">
+            <span style="background-color: red;color:white">QRS&lt;130</span>
+            <span style="background-color:green;color:white">LBBB: QRS&ge;130</span>
+            <span style="background-color:yellow;color:darkgrey">non-LBBB: QRS&ge;150</span>
+    </div>
+    
+    <div class="w3-row w3-padding">
+        <div class="w3-col s6 w3-mobile w3-padding">
+            <img src="media/QRSandLBBB.png" style="width:100%">
+        </div>
+        <div class="w3-col s6 w3-mobile w3-padding">
+            <img src="media/QRSandNLBBB.png" style="width:100%">
+        </div>
+    </div>
+    <div class="ref w3-center" style="color:#878787">
+        <a href="https://www.ahajournals.org/doi/10.1161/CIRCHEARTFAILURE.113.000380" target="_blank">
+            Impact of QRS Morphology and Duration on Outcomes After CRT. Results From RAFT.
+        </a><br>
+        <a href="https://academic.oup.com/eurheartj/article/37/27/2129/1748921#109986953" target="_blank">
+        2016 ESC Guidelines for Heart Failure
+        </a>
+        
+    </div>
+</div>
+
+<!--CRT NYHA-->
+<div class="block">
+    <div class="w3-row w3-padding sans" style="font-size: 3vmax;color:white;font-weight:200;background-color: #115bbc">
+            Benefits of CRT by<span style="font-weight: 600"> NYHA & LVEF</span>
+    </div>
+    
+    <div id="chart_lines" class="w3-center tabletUp" style="width: 100vw; height: 75vh;">
+    </div>
+    <div class="tablet w3-padding">
+        <img src="media/crtNYHA.png" style="width:100%">
+    </div>
+    <div class="w3-row sans w3-center" style="font-size:1.8vmax;color: #555">
+            Data on NYHA I was from MADIT-CRT. Data on NYHA II-IV was from the same meta-analysis.
+        </div>
+    <div class="ref w3-content w3-center" style="color:#878787">
+        <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa0906431" target="_blank">
+        MADIT-CRT
+        </a> and
+        <a href="https://academic.oup.com/eurheartj/article/34/46/3547/531706" target="_blank">
+        Eur Heart J 2013.
+        </a>
+    </div>
+</div>
+
+<!--EF-->
+<div class="block w3-padding w3-border-top">
+    <div id="chart_lines2" class="w3-center tabletUp" style="width: 100vw; height: 85vh;">
+    </div>
+    <div class="tablet w3-padding">
+        <img src="media/crtLVEF.png" style="width:100%">
+    </div>
+    <div class="ref w3-content w3-center" style="color:#878787">
+            <a href="https://academic.oup.com/eurheartj/article/34/46/3547/531706" target="_blank">
+            Eur Heart J 2013.
+            </a>
+        </div>
+</div>
+
+<!--before 1st sum-->
+<div class="block gradient thai" style="font-size:5.5vmax;padding: 1vmax 5vmax;color: white">
+    <div class="w3-content" style="padding-top:15vh;text-align: left;line-height: 120%">
+        <i class="material-icons" style="font-size:5.5vmax">
+            format_quote   </i><br>
+        ขอสรุป สรุป...หน่อยสิ
+    </div>
+
+    <!--logo-->
+    <div style="font-size:2vmax;background-color:#ddd;font-weight: 400;color: #0e79ce;padding: 0;margin-top: 5vh;"  
+    class="w3-content sans w3-center">
+        <a href="https://heartrhythmbox.com/" target="_blank" style="text-decoration: none;cursor:pointer;">
+        heart<span style="font-weight:600">rhythm</span>box.com</a>
+        </div> 
+</div> 
+
+<!--first sum-->
+<div class="block w3-black sans w3-center">
+    <div class="w3-row" style="font-size:4vmax;font-weight: 200;color:#1DE3FA;padding-top: 3vmax;
+    padding-bottom: 3vmax">
+        Current Indications for <span style="font-weight: 600">CRT</span>
+    </div>
+    <div class="w3-row sans" style="padding: 2vmax;font-size:2.5vmax;color:black;font-weight: 400">
+        <span style="color:#cbf0fd">QRS duration and morphology</span><br>
+        <span style="background-color: red;">QRS&lt;130</span>
+        <span style="background-color:green;">LBBB: QRS&ge;130</span>
+        <span style="background-color:yellow;">non-LBBB: QRS&ge;150</span>
+    </div>
+    <div class="w3-row sans" style="padding: 2vmax;font-size:2.5vmax;color:black;font-weight: 400">
+        <span style="color:#cbf0fd">NYHA</span><br>
+        <span style="background-color:orange;">NYHA I if LBBB with QRS&ge;150</span>    
+        <span style="background-color:green;">NYHA II-ambulatory IV</span>
+    </div>
+    <div class="w3-row sans" style="padding: 2vmax;font-size:2.5vmax;color:black;font-weight: 400">
+        <span style="color:#cbf0fd">LVEF</span><br>
+            <span style="background-color:green;">LVEF&le;35%</span>    
+            <span style="background-color:yellow;">HF with anticipated RV pacing of &gt;40%</span>
+            
+    </div>
+    <div class="ref w3-center" style="padding-top:1vmax;color:#868686">
+        <a href="https://www.sciencedirect.com/science/article/pii/S0735109713021153" target="_blank">
+        2013 ACCF/AHA Guidelines for HF
+        </a>, 
+        <a href="https://academic.oup.com/eurheartj/article/37/27/2129/1748921#109986953" target="_blank">
+        2016 ESC Guidelines for HF
+        </a>, and
+        <a href="http://heartfailure.onlinejacc.org/content/6/4/308" target="_blank">
+        JACC Heart Failure 2018.
+        </a>
+    </div>
+</div>
+
+<!--intro to ICD-->
+<div class="block gradient thai" style="font-size:5vmax;padding: 1vmax 5vmax;color: white">
+    <div class="w3-content" style="padding-top:15vh;text-align: left;line-height: 120%">
+        <i class="material-icons" style="font-size:5vmax">
+            format_quote   </i><br>
+        แล้วเมื่อไหร่ต้องใส่ CRT-D<br>
+        เมื่อไหร่ใส่แค่ CRT-P ก็พอ
+    </div>
+
+    <!--logo-->
+    <div style="font-size:2vmax;background-color:#ddd;font-weight: 400;color: #0e79ce;padding: 0;margin-top: 5vh;"  
+    class="w3-content sans w3-center">
+        <a href="https://heartrhythmbox.com/" target="_blank" style="text-decoration: none;cursor:pointer;">
+        heart<span style="font-weight:600">rhythm</span>box.com</a>
+        </div> 
+</div> 
+
+<!--guidelines ICD-->
+<div class="block w3-black">
+    <div class="w3-cell-row w3-center" style="padding: 5vh 1vw">
+        <div class="w3-cell w3-mobile w3-cell-middle w3-padding">
+            <img src="media/CRTD.jpg" style="width: 100%">
+        </div>
+        <div class="w3-cell w3-mobile w3-cell-middle w3-padding">
+            <div class="w3-row w3-padding sans" style="color:#1DE3FA;font-size:2.5vmax;font-weight: 200;line-height: 120%">
+            Current class I indications for <span style="font-weight: 600">ICD for primary prevention</span> of sudden cardiac arrest
+            </div> 
+            <table class="w3-table w3-hoverable narrow w3-bordered" style="font-size: 2vmax;margin-top: 2vmax">
+                <tr style="background-color:#1DE3FA;font-size: 2.2vmax;color: black">
+                    <th>Conditions</th><th>LVEF</th><th>NYHA</th><th>Trials</th>
+                </tr>
+                <tr class="w3-hover-white w3-padding">
+                    <td>Ischemic;<br>&gt;40d post MI or &gt;90d post revascularization</td>
+                    <td>&le;30%</td><td>I-III</td>
+                    <td>
+                        <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa013474" target="_blank">
+                        MADIT II</a>
+                    </td>
+                </tr>
+                <tr class="w3-hover-white w3-padding">
+                    <td>Stable HF; ischemic or non-ischemic</td>
+                    <td>&le;35%</td><td>II-III</td>
+                    <td>
+                        <a href="https://www.nejm.org/doi/full/10.1056/nejmoa043399" target="_blank">
+                            SCD-HeFT</a>
+                    </td>
+                </tr>
+                <tr class="w3-hover-white w3-padding">
+                    <td>Recent MI, NSVT, +EP Study</td>
+                    <td>&le;40%</td><td>Any</td>
+                    <td>
+                        <a href="https://www.nejm.org/doi/full/10.1056/NEJM200006293422602" target="_blank">
+                            MUSTT</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!--SCD Trends-->
+<div class="block w3-black" style="padding: 3vmax">
+    
+    <div class="w3-row">
+        <div class="w3-cell w3-mobile">
+        <img src="media/SCDTrends.jpeg" style="width: 100%">
+        </div>
+        <div class="w3-cell w3-mobile w3-cell-middle narrow w3-padding" style="font-size: 3vmax;color:#1DE3FA">
+            Rates of sudden cardiac death declined substantially over time.
+            <br><br>
+            <div class="ref">
+                    <a href="https://www.nejm.org/doi/10.1056/NEJMoa1609758" target="blank">
+                        NEJM 2017.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--risk score-->
+<div class="block">
+    <div class="w3-row sans" style="font-size:3vmax;background-color: #115bbc">
+        <span style="padding:2vmax;color: white">Benefits of ICD by Seatle Heart Failure Model</span>
+    </div>
+    <div class="w3-button w3-border w3-round-large w3-padding-small sans" 
+    style="font-size: 1.8vmax;margin-left: 2vmax;margin-top:0.5vmax" 
+    onclick="document.getElementById('SHFM').style.display='block'">
+    What is Seatle Heart Failure Model?
+    </div>
+
+    <!-- The Modal -->
+    <div id="SHFM" class="w3-modal" style="padding-top:5vh">
+        <div class="w3-modal-content w3-card-4 w3-animate-opacity" style="width:80%;">
+        <div class="w3-container" style="background-color:#0e79ce;color:white;">
+            <span class="narrow" style="font-size: 2.2vmax">Model to evaluate risks for...</span>
+            <span onclick="document.getElementById('SHFM').style.display='none'" 
+            class="w3-button w3-display-topright w3-padding-small">&times;</span>
+        </div>
+        <div class="w3-bar narrow" style="font-size:2vmax;padding-left: 1vmax">
+            <button class="tabLink w3-bar-item  w3-padding-small w3-button w3-round-large w3-border" onclick="showTab(0)">Any Death</button>
+            <button class="tabLink w3-bar-item w3-button w3-border w3-round-large w3-padding-small" onclick="showTab(1)">Sudden Cardiac Death</button>
+        </div>
+
+        <div class="w3-container w3-padding tabInfo narrow" style="font-size: 1.9vmax;line-height: 110%">
+            <span style="color: #115bbc">The Seattle Heart Failure Model (SHFM)</span>
+            is a calculator of projected survival 
+            at baseline and after interventions for patients with heart failure.
+            <div class="w3-center w3-padding">
+            <img src="media/SHFM.jpeg" style="width:80%;"></div>
+            <div class="ref" style="color: #878787">
+            <a href="https://depts.washington.edu/shfm" target="_blank">SHFM</a></div>
+        </div>
+         
+        <div class="w3-container w3-padding tabInfo narrow" style="font-size: 1.9vmax;line-height: 110%">
+            <span style="color: #115bbc;">The Seattle Proportional Risk Model (SPRM)</span>
+                is a calculator of estimated proportion of sudden death in patients with heart failure with reduced ejection fraction
+                (primarily EF≤35%) to illustrate the variable the benefit of a primary prevention ICD. 
+            <div class="w3-center w3-padding">    
+            <img src="media/SPRM.jpg" style="width: 70%;border: #ddd 0.1vmax solid;"></div>
+            <div class="ref" style="color: #878787;">
+            <a href="http://depts.washington.edu/SPRM" target="_blank">SPRM</a>, and
+            <a href="https://www.sciencedirect.com/science/article/pii/S2405500X16302985" target="_blank">
+            JACC EP 2017</a>
+            </div>
+        </div>
+        <div class="w3-container w3-light-grey narrow" style="font-size:1.5vmax">
+            <button class="w3-button w3-right w3-white w3-border w3-padding-small" 
+            onclick="document.getElementById('SHFM').style.display='none'">Close</button>
+           </div>
+        
+        </div>
+    </div>
+
+    <div id="icd_chart1" class="w3-center tabletUp" style="width: 100vw; height: 80vh;">
+        </div>
+    <div class="tablet w3-padding">
+        <img src="media/icdAll.png" style="width:100%">
+    </div>
+    <div class="w3-center ref" style="color: #878787;">
+    <a href="https://doi.org/10.1016/j.jacc.2017.03.568" target="_blank">
+    JACC 2017
+    </a> </div>
+</div>
+
+<!--nonICM-->
+<div class="block w3-padding w3-border-top">
+    <div id="icd_chart2" class="w3-center tabletUp" style="width: 100vw; height: 90vh;">
+        </div>
+    <div class="tablet w3-padding">
+        <img src="media/icdNICM.png" style="width:100%">
+    </div>
+        <div class="w3-center ref" style="color: #878787">
+            <a href="https://doi.org/10.1016/j.jchf.2019.03.019" target="_blank">
+                JACC Heart Failure 2019
+            </a></div>
+</div>
+
+<!--intro to other devices-->
+<div class="block gradient thai" style="font-size:5vmax;padding: 1vmax 5vmax;color: white">
+    <div class="w3-content" style="padding-top:15vh;text-align: left;line-height: 120%">
+        <i class="material-icons" style="font-size:5.5vmax">
+            format_quote   </i><br>
+        มี devices อื่นอีกมั้ย <br>
+        <span style="font-size:3vmax">(ถึงไม่เคยใช้...ก็พูดได้ไม่ใช่เหรอ)</span>
+    </div>
+
+    <!--logo-->
+    <div style="font-size:2vmax;background-color:#ddd;font-weight: 400;color: #0e79ce;padding: 0;margin-top: 5vh;"  
+    class="w3-content sans w3-center">
+        <a href="https://heartrhythmbox.com/" target="_blank" style="text-decoration: none;cursor:pointer;">
+        heart<span style="font-weight:600">rhythm</span>box.com</a>
+        </div> 
+</div>
+
+<!--wearable ICD-->
+<div class="block w3-black w3-padding">
+    <div class="w3-container w3-padding" style="max-width: 1200px;margin-left:auto;margin-right:auto">
+        <div class="w3-row w3-center sans" style="font-size: 4vmax;color:#1DE3FA;padding-top:2vmax">
+            Wearable ICD
+        </div>
+        <div class="w3-row w3-padding">
+            <div class="w3-col s6 w3-mobile" style="padding: 1vmax">
+            <img src="media/wearableICD.png" style="width: 100%"></div>
+            <div class="w3-col s6 sans w3-mobile" style="font-size:2vmax;color:#ddd;padding: 1vmax;font-weight: 200">
+                <div class="w3-border-bottom">
+                <span style="color:yellow;font-weight: 600">Reasonable</span> as a bridge
+                to <span style="font-weight: 600;color:white">transplantation</span> or re-implantation due to transient interruption 
+                such as <span style="font-weight: 600;color:white">infection</span>.
+                </div>
+                <div style="padding-top: 1vmax">
+                    <span style="color:orange;font-weight: 600">May be considered</span> as bridging therapy in situations 
+                    associated with increased risk of death in which ICDs have been shown to reduce SCD 
+                    but not overall survival such as <span style="color:white;font-weight:600">within 40 days of MI.</span>
+                </div><br>
+                <div class="ref" style="color:#878787;">
+                        <a href="https://doi.org/10.1093/eurheartj/ehw353" target="_blank">
+                        Eur Heart J 2017.
+                        </a>
+                    </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<!--CCM-->
+<div class="block w3-black w3-padding">
+        <div class="w3-container w3-padding" style="max-width: 1200px;margin-left:auto;margin-right:auto">
+            <div class="w3-row w3-center sans" style="font-size: 4vmax;color:#1DE3FA;padding-top:2vmax">
+                Cardiac Contractility Modulation
+            </div>
+            <div class="w3-row w3-padding">
+                <div class="w3-col s6 w3-mobile" style="padding: 1vmax">
+                <img src="media/CCM.jpg" style="width: 100%;padding:1vmax"></div>
+                <div class="w3-col s6 sans w3-mobile" style="font-size:2vmax;color:white;padding: 1vmax;
+                line-height: 130%;font-weight: 200">
+                    <div class="w3-border-bottom">
+                    A device-based therapy for heart failure (HF) that involves applying 
+                    <span style="font-weight: 600;color:#1DE3FA">biphasic electric signals</span> 
+                    to the right ventricular septal wall during 
+                    the absolute myocardial refractory period.
+                    </div>
+                    <div style="padding-top: 1vmax;font-weight: 400">
+                    Been shown to improve quality of life in those with LVEF 35-45% and narrow QRS.</div>
+                    <div class="ref" style="color:#878787;">
+                        <a href="http://heartfailure.onlinejacc.org/content/early/2018/05/04/j.jchf.2018.04.010" target="_blank">
+                        JACC HF 2018, 
+                        </a> and
+                            <a href="https://doi.org/10.1161/CIRCULATIONAHA.118.036460" target="_blank">
+                            Circulation 2018.
+                            </a>
+                        </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+<!--conclusions-->
+<div class="block gradient">
+    <div class="w3-container sans" 
+    style="color:white;font-size:4vmax;padding-top: 25vh;font-weight: 600;max-width: 1200px;
+    margin-left: auto;margin-right: auto">
+    CONCLUSIONS
+
+    <ul class="w3-ul" style="font-size: 2vmax;font-weight:400;line-height:120%;padding-top:5vh">
+        <li class="w3-hoverable w3-hover-white w3-round-large" style="background-color: #ddd;color:#0e79ce">
+            <span style="font-weight: 600">LVEF, NYHA class, and QRS duration </span>
+            remain the major indicators for cardiac rhythm devices in 
+            heart failure.
+        </li>    <br>
+        <li class="w3-hoverable w3-hover-white w3-round-large" style="background-color: #ddd;color:#0e79ce">
+            <span style="font-weight: 600">Age, sex, etiology, and comorbidities</span>
+            can further delineate who would be most beneficial from device therapy.
+        </li>
+    </ul>
+    </div>
+</div>
+
+<!--end pointer-->
+</div>
+
+<!--bottom bar-->
+<div class="w3-row w3-center sans w3-margin" style="font-size: 1.1vmax;color:#868686">
+    <a href="https://heartrhythmbox.com" target="_blank" style="text-decoration:none">
+        <img src="box transparent.png" style="width:1.3vmax">
+        HeartRhythmBox.com
+    </a> <span style="color:black"> &#9679; </span>
+    <a href="#top" style="text-decoration:none;color:black">&uArr; to top</a>
+</div>
+</body>
+
+
+<script src="block navigation.js" ></script>
+<script src="pointer.js" ></script>
+<script>
+
+//f9
+window.addEventListener("keydown", function(event) {
+        event.preventDefault();
+        if (event.keyCode===120) {
+            showInfo()
+        }
+    })
+
+function showInfo(){
+  document.getElementById('info').style.display = "block"
+}
+
+//nav and pointer
+//up arrow
+window.addEventListener("keydown", function(event) {
+    event.preventDefault();
+    if (event.keyCode===38) {
+    blockNav(-1);
+    }
+})
+
+//down arrow
+window.addEventListener("keydown", function(event) {
+    event.preventDefault();
+    if (event.keyCode===40) {
+    blockNav(1);
+    }
+})
+
+window.addEventListener("keydown", function(event) {
+        event.preventDefault();
+        if (event.keyCode===80) {
+        pointerSwitch()}
+    })
+
+//pointer
+var pSwitch = 0;
+
+function showCell(cell){
+    var c = document.getElementsByClassName(cell)
+    for (var i = 0;i<c.length;i++){
+        c[i].style.display = "table-row"
+    }
+}
+
+function showTab(tabNo){
+    var tab = document.getElementsByClassName('tabLink');
+    var info = document.getElementsByClassName('tabInfo');
+
+    for (var i=0;i<tab.length;i++){
+        tab[i].style.color= "black";tab[i].style.backgroundColor = "white"
+        info[i].style.display = "none"
+    }
+
+    tab[tabNo].style.color = "#115bbc";tab[tabNo].style.backgroundColor = "lightgrey"
+    info[tabNo].style.display = "block"
+}
+
+</script>
+
+</html>
