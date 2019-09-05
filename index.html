@@ -528,17 +528,17 @@ video {
     <div class="w3-row sans" style="padding: 2vmax;font-size:2.5vmax;color:black;font-weight: 400">
         <span style="color:#cbf0fd">QRS duration and morphology</span><br>
         <span style="background-color: red;">QRS&lt;130</span>
-        <span style="background-color:green;">LBBB: QRS&ge;130</span>
+        <span id='QRS' style="background:green;" onclick="changeBg('QRS')">LBBB: QRS&ge;130</span>
         <span style="background-color:yellow;">non-LBBB: QRS&ge;150</span>
     </div>
     <div class="w3-row sans" style="padding: 2vmax;font-size:2.5vmax;color:black;font-weight: 400">
         <span style="color:#cbf0fd">NYHA</span><br>
         <span style="background-color:orange;">NYHA I if LBBB with QRS&ge;150</span>    
-        <span style="background-color:green;">NYHA II-ambulatory IV</span>
+        <span id='NYHA' style="background-color:green;" onclick="changeBg('NYHA')">NYHA II-ambulatory IV</span>
     </div>
     <div class="w3-row sans" style="padding: 2vmax;font-size:2.5vmax;color:black;font-weight: 400">
         <span style="color:#cbf0fd">LVEF</span><br>
-            <span style="background-color:green;">LVEF&le;35%</span>    
+            <span id='EF' style="background-color:green;" onclick="changeBg('EF')">LVEF&le;35%</span>    
             <span style="background-color:yellow;">HF with anticipated RV pacing of &gt;40%</span>
             
     </div>
@@ -889,6 +889,18 @@ function showTab(tabNo){
 
     tab[tabNo].style.color = "#115bbc";tab[tabNo].style.backgroundColor = "lightgrey"
     info[tabNo].style.display = "block"
+}
+
+function changeBg(name){
+    if (name=='QRS'){
+        document.getElementById(name).style.background = "linear-gradient(to left, darkgreen, greenYellow 80%)"
+    }
+    else if (name=='NYHA'){
+        document.getElementById(name).style.background = "linear-gradient(to right, darkgreen, greenYellow 67%)"
+    }
+    else if (name=='EF'){
+        document.getElementById(name).style.background = "linear-gradient(to right, darkgreen, greenYellow 80%)"
+    }
 }
 
 </script>
