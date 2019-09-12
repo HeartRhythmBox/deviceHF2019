@@ -82,12 +82,13 @@
         // The intervals data as narrow lines (useful for showing raw source data)
         var options_lines = {
             title: 'HR and 95%CI for death or HF hospitalization of CRT vs. Conventional Tx',
-            titleTextStyle: {color:'#115bbc', fontSize:30, fontName:"Exo"},
+            titleTextStyle: {color:'#0d448c', fontSize:30, fontName:"Exo"},
+            backgroundColor: '#a4f3fd',
             curveType: 'function',
-            lineWidth: 5,
+            lineWidth: 5, series: [{'color': '#0d448c'}],
             intervals: { 'style':'line' },
             legend: 'none',
-            vAxis: {baseline:1,title: '<---- favor CRT',
+            vAxis: {baseline:1,title: '<---- favor CRT', gridlines: {color:'#878787'},
             titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}},
             hAxis: {title: 'NYHA',titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}}
         };
@@ -181,9 +182,9 @@
         // The intervals data as narrow lines (useful for showing raw source data)
         var options_lines = {
             title: 'HR and 95%CI for all-cause mortality of ICD vs. Conventional Tx in non-ischemic cardiomyopathy',
-            titleTextStyle: {color:'#115bbc', fontSize:30, fontName:"Exo"},
-            curveType: 'function',
-            lineWidth: 5,
+            titleTextStyle: {color:'#0d448c', fontSize:30, fontName:"Exo"},
+            curveType: 'function', backgroundColor:'#a4f3fd',
+            lineWidth: 5, series: [{'color': '#0d448c'}],
             intervals: { 'style':'line' },
             legend: 'none',
             vAxis: {baseline:1,title: '<---- favor ICD', 
