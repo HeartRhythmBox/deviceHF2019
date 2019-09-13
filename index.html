@@ -82,15 +82,15 @@
         // The intervals data as narrow lines (useful for showing raw source data)
         var options_lines = {
             title: 'HR and 95%CI for death or HF hospitalization of CRT vs. Conventional Tx',
-            titleTextStyle: {color:'#0d448c', fontSize:30, fontName:"Exo"},
-            backgroundColor: '#a4f3fd',
+            titleTextStyle: {color:'#092f62', fontSize:30, fontName:"Exo"},
+            backgroundColor: '#e3eefc',
             curveType: 'function',
-            lineWidth: 5, series: [{'color': '#0d448c'}],
+            lineWidth: 8, series: [{'color': '#092f62'}],
             intervals: { 'style':'line' },
             legend: 'none',
             vAxis: {baseline:1,title: '<---- favor CRT', gridlines: {color:'#878787'},
-            titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}},
-            hAxis: {title: 'NYHA',titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}}
+            titleTextStyle: {color:'#555', fontSize:25, fontName:"Exo"}},
+            hAxis: {title: 'NYHA',titleTextStyle: {color:'#555', fontSize:25, fontName:"Exo"}}
         };
   
         var chart_lines = new google.visualization.LineChart(document.getElementById('chart_lines'));
@@ -118,7 +118,7 @@
             title: 'HR and 95%CI for death or HF hospitalization of CRT vs. Conventional Tx',
             titleTextStyle: {color:'#115bbc', fontSize:30, fontName:"Exo"},
             curveType: 'function',
-            lineWidth: 5,
+            lineWidth: 8,
             intervals: { 'style':'line' },
             legend: 'none',
             vAxis: {baseline:1,title: '<---- favor CRT',
@@ -152,7 +152,7 @@
             title: 'HR and 95%CI for all-cause mortality of ICD vs. Conventional Tx',
             titleTextStyle: {color:'#115bbc', fontSize:30, fontName:"Exo"},
             curveType: 'function',
-            lineWidth: 5,
+            lineWidth: 8,
             intervals: { 'style':'line' },
             legend: 'none',
             vAxis: {baseline:1,title: '<---- favor ICD', 
@@ -182,14 +182,14 @@
         // The intervals data as narrow lines (useful for showing raw source data)
         var options_lines = {
             title: 'HR and 95%CI for all-cause mortality of ICD vs. Conventional Tx in non-ischemic cardiomyopathy',
-            titleTextStyle: {color:'#0d448c', fontSize:30, fontName:"Exo"},
-            curveType: 'function', backgroundColor:'#a4f3fd',
-            lineWidth: 5, series: [{'color': '#0d448c'}],
+            titleTextStyle: {color:'#092f62', fontSize:30, fontName:"Exo"},
+            curveType: 'function', backgroundColor:'#e3eefc',
+            lineWidth: 8, series: [{'color': '#092f62'}],
             intervals: { 'style':'line' },
             legend: 'none',
             vAxis: {baseline:1,title: '<---- favor ICD', 
-            titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}},
-            hAxis: {title: 'Risk Profiles',titleTextStyle: {color:'#878787', fontSize:25, fontName:"Exo"}}
+            titleTextStyle: {color:'#555', fontSize:25, fontName:"Exo"}},
+            hAxis: {title: 'Risk Profiles',titleTextStyle: {color:'#555', fontSize:25, fontName:"Exo"}}
         };
   
         var chart_lines = new google.visualization.LineChart(document.getElementById('icd_chart2'));
@@ -296,7 +296,7 @@ video {
 
 <!--Cinderella-->
 <div class="w3-black w3-center block noMobile">
-    <video id="cinderella" controls style="padding-top: 5vh">
+    <video id="cinderella" controls style="padding-top: 3vh;padding-bottom: 3vh">
         <source src="media/cinderella.mp4" type="video/mp4" >
     </video><br>
 </div>   
@@ -468,7 +468,7 @@ video {
 </div>
 
 <!--CRT NYHA-->
-<div class="block">
+<div class="block" style="background-color: #e3eefc">
     <div class="w3-row w3-padding sans" style="font-size: 3vmax;color:white;font-weight:200;background-color: #115bbc">
             Benefits of CRT by<span style="font-weight: 600"> NYHA & LVEF</span>
     </div>
@@ -702,7 +702,7 @@ video {
 </div>
 
 <!--nonICM-->
-<div class="block w3-padding w3-border-top">
+<div class="block w3-padding w3-border-top" style="background-color: #e3eefc">
     <div id="icd_chart2" class="w3-center tabletUp" style="width: 100vw; height: 90vh;">
         </div>
     <div class="tablet w3-padding">
